@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meu Santinho · Santinhos para colecionar, rezar e presentear</title>
+<meta name="description" content="Arte sacra digital em alta resolução: santinhos, quadros e orações para imprimir ou usar no celular. Novena de Nossa Senhora Aparecida gratuita.">
+<meta property="og:title" content="Meu Santinho">
+<meta property="og:description" content="Santinhos e quadros católicos para colecionar, rezar e presentear. Novena de Aparecida grátis.">
+<meta property="og:image" content="https://meusantinhobr.com.br/img/aparecida.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/perfil.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap">
+
+<!-- ================================================================
+     CONFIGURAÇÃO — edite só este bloco
+     ================================================================ -->
+<script>
+const CONFIG = {
+  pixelId: "1418781117031482",
+  novenaUrl: "https://drive.google.com/file/d/19aHHqe8IPrwwXa0XHEZKcoOHYdokE8I_/view",
+  whatsappChannel: "https://whatsapp.com/channel/0029VbDoMUlGJP8LW8zWIr1F",
+  whatsappNumber: "",   // ex.: "5511999999999" — deixe vazio para esconder o botão de conversa
+  instagram: "https://instagram.com/meu.santinho.br",
+  facebook: "https://facebook.com/meusantinhobr",
+  tiktok: "https://tiktok.com/@meusantinhobr",
+  colecao: {
+    nome: "Coleção Padroeiros do Brasil",
+    preco: "R$ 39,90",
+    de: "",             // preço "de" riscado, opcional
+    url: "https://pay.kiwify.com.br/nx4poR0",
+    selo: "Pré-venda · 7 santos · acesso completo no dia 12"
+  },
+  // Só Aparecida tem link próprio. Os outros ficam com url vazia e o botão leva para a coleção.
+  kits: [
+    { slug: "aparecida",        nome: "Nossa Senhora Aparecida", linha: "Padroeira do Brasil · 12 de outubro", preco: "R$ 19,90", url: "https://pay.kiwify.com.br/csjL1Mp", destaque: true },
+    { slug: "sagrado-coracao",  nome: "Sagrado Coração de Jesus", linha: "Primeiras sextas-feiras",            preco: "", url: "" },
+    { slug: "santo-antonio",    nome: "Santo Antônio",            linha: "13 de junho · casamenteiro",         preco: "", url: "" },
+    { slug: "padre-pio",        nome: "São Padre Pio",            linha: "23 de setembro",                     preco: "", url: "" },
+    { slug: "sao-miguel",       nome: "São Miguel Arcanjo",       linha: "29 de setembro · proteção",          preco: "", url: "" },
+    { slug: "santa-teresinha",  nome: "Santa Teresinha",          linha: "1º de outubro · das pequenas coisas", preco: "", url: "" },
+    { slug: "sao-francisco",    nome: "São Francisco de Assis",   linha: "4 de outubro · da paz",              preco: "", url: "" },
+  ],
+  kitInclui: [
+    "Arte em alta resolução (300 dpi)",
+    "Santinho A5 para imprimir (frente e verso)",
+    "Quadro A4 e A3 para emoldurar",
+    "Papel de parede para o celular",
+    "Cartão de oração A6"
+  ]
+};
+</script>
+<!-- ================================================================ -->
+
+<style>
+:root{
+  --azul:#1F3A6E; --dourado:#C9A24B; --marfim:#F7F1E3; --bordo:#7A1F2B; --grafite:#2B2B2B;
+  --marfim2:#EFE6D2; --linha:#D9CDB0;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--marfim);color:var(--grafite);font-family:'Lato',Verdana,sans-serif;font-size:19px;line-height:1.55}
+a{color:inherit}
+h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.12;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:19px;text-decoration:none;border:2px solid transparent;transition:transform .08s ease,box-shadow .2s;cursor:pointer}
+.btn:active{transform:scale(.98)}
+.btn-gold{background:var(--dourado);color:var(--azul);border-color:var(--dourado)}
+.btn-gold:hover{box-shadow:0 6px 18px rgba(201,162,75,.4)}
+.btn-blue{background:var(--azul);color:var(--marfim);border-color:var(--azul)}
+.btn-blue:hover{box-shadow:0 6px 18px rgba(31,58,110,.35)}
+.btn-line{background:transparent;color:var(--azul);border-color:var(--azul)}
+.btn-wa{background:#25D366;color:#fff;border-color:#25D366}
+.btn-full{width:100%}
+
+/* topo */
+header.hero{background:var(--azul);color:var(--marfim);text-align:center;padding:44px 20px 40px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(ellipse at center,rgba(201,162,75,.18),transparent 60%);pointer-events:none}
+.hero .sym{width:96px;height:120px;margin:0 auto 14px;display:block}
+.hero h1{font-size:46px;color:var(--marfim)}
+.hero .tag{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;color:var(--dourado);font-size:24px;margin:10px 0 18px}
+.hero p{max-width:600px;margin:0 auto 26px;font-size:20px;opacity:.95}
+.hero .rule{width:80px;height:2px;background:var(--dourado);margin:0 auto 18px}
+.hero .cta{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto;position:relative;z-index:1}
+
+/* seções */
+section{padding:48px 0}
+section h2{font-size:34px;color:var(--azul);text-align:center;margin-bottom:8px}
+section .sub{text-align:center;color:#555;max-width:640px;margin:0 auto 30px;font-size:19px}
+.eyebrow{display:block;text-align:center;font-size:14px;letter-spacing:4px;font-weight:700;color:var(--bordo);margin-bottom:10px}
+
+/* novena */
+.novena{background:var(--marfim2);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.novena .card{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:22px;max-width:760px;margin:0 auto}
+.novena .arch{width:150px;height:200px;border:4px solid var(--dourado);border-radius:75px 75px 0 0;overflow:hidden;background:var(--azul)}
+.novena .arch img{width:100%;height:100%;object-fit:cover;display:block}
+.novena h3{font-size:26px;color:var(--azul);margin-bottom:6px}
+.novena p{margin:0 0 14px;color:#444}
+.free{display:inline-block;background:var(--bordo);color:#fff;font-size:13px;letter-spacing:2px;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:8px}
+
+/* grade */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.kit{background:#fff;border:1px solid var(--linha);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-align:center;position:relative}
+.kit .arch{margin:22px auto 0;width:180px;height:240px;border:4px solid var(--dourado);border-radius:90px 90px 0 0;overflow:hidden;background:var(--azul)}
+.kit .arch img{width:100%;height:100%;object-fit:cover;display:block}
+.kit .body{padding:16px 18px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.kit h3{font-size:24px;color:var(--azul)}
+.kit .linha{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;color:var(--bordo);font-size:17px}
+.kit .preco{font-size:26px;font-weight:700;color:var(--grafite);margin:8px 0 10px}
+.kit .preco small{font-size:15px;color:#777;font-weight:400;text-decoration:line-through;margin-right:8px}
+.kit .btn{margin-top:auto}
+.badge{position:absolute;top:14px;left:14px;background:var(--bordo);color:#fff;font-size:12px;letter-spacing:2px;font-weight:700;padding:5px 10px;border-radius:6px}
+
+/* coleção */
+.colecao{background:var(--azul);color:var(--marfim)}
+.colecao h2{color:var(--marfim)}
+.colecao .sub{color:rgba(247,241,227,.85)}
+.colecao .box{max-width:720px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,75,.5);border-radius:18px;padding:28px;text-align:center}
+.colecao .thumbs{display:flex;justify-content:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.colecao .thumbs span{width:54px;height:72px;border:2px solid var(--dourado);border-radius:27px 27px 0 0;overflow:hidden;display:block}
+.colecao .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.colecao .preco{font-size:34px;font-weight:700;margin:6px 0 4px}
+.colecao .selo{display:inline-block;color:var(--dourado);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:19px;margin-bottom:16px}
+.colecao ul{list-style:none;padding:0;margin:0 auto 20px;max-width:420px;text-align:left}
+.colecao li{padding:6px 0 6px 30px;position:relative}
+.colecao li::before{content:"✦";color:var(--dourado);position:absolute;left:6px}
+
+/* como funciona */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.step{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:22px;text-align:center}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--dourado);color:var(--azul);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Playfair Display',Georgia,serif}
+.step h3{font-size:21px;color:var(--azul);margin-bottom:6px}
+.step p{margin:0;color:#444;font-size:17px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px;margin-top:26px;color:#555;font-size:16px}
+.trust span::before{content:"✓ ";color:var(--dourado);font-weight:700}
+
+/* whatsapp */
+.zap{background:var(--marfim2);border-top:1px solid var(--linha)}
+.zap .box{max-width:560px;margin:0 auto;text-align:center}
+.zap .box p{color:#444}
+.zap .btns{display:flex;flex-direction:column;gap:12px}
+
+footer{background:var(--azul);color:rgba(247,241,227,.85);text-align:center;padding:34px 20px;font-size:16px}
+footer .social{display:flex;justify-content:center;gap:18px;margin:12px 0 14px;flex-wrap:wrap}
+footer .social a{color:var(--marfim);text-decoration:none;font-weight:700}
+footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
+
+@media (max-width:560px){
+  body{font-size:18px}
+  .hero h1{font-size:38px}
+  .novena .card{grid-template-columns:1fr;text-align:center}
+  .novena .arch{margin:0 auto}
+  section{padding:38px 0}
+  section h2{font-size:29px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="simbolo" viewBox="0 0 120 150" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 2 V16 M54 7 H66" stroke-width="3"/>
+    <path d="M18 138 V60 A42 42 0 0 1 102 60 V138 Z" stroke-width="4"/>
+    <path d="M28 130 V60 A32 32 0 0 1 92 60 V130 Z" stroke-width="1.5"/>
+    <circle cx="60" cy="78" r="7" stroke-width="2.5"/>
+    <path d="M72 78 H85 M66 88.4 L72.5 99.6 M54 88.4 L47.5 99.6 M48 78 H35 M54 67.6 L47.5 56.4 M66 67.6 L72.5 56.4" stroke-width="2.5"/>
+    <path d="M70.4 84 L77.3 88 M60 90 V98 M49.6 84 L42.7 88 M49.6 72 L42.7 68 M60 66 V58 M70.4 72 L77.3 68" stroke-width="1.8"/>
+  </symbol>
+</svg>
+
+<header class="hero">
+  <svg class="sym" style="color:var(--dourado)"><use href="#simbolo"/></svg>
+  <h1>Meu Santinho</h1>
+  <div class="tag">Para colecionar, rezar e presentear</div>
+  <div class="rule"></div>
+  <p>Arte sacra em alta resolução, com o santo e a oração de cada dia. Para imprimir, emoldurar, guardar na carteira ou levar no celular.</p>
+  <div class="cta">
+    <a class="btn btn-gold" href="#novena">📿 Novena de Aparecida grátis</a>
+    <a class="btn btn-line" style="color:var(--marfim);border-color:rgba(247,241,227,.6)" href="#santinhos">Ver os santinhos</a>
+  </div>
+</header>
+
+<section class="novena" id="novena">
+  <div class="wrap">
+    <span class="eyebrow">DE 3 A 11 DE OUTUBRO</span>
+    <h2>Novena de Nossa Senhora Aparecida</h2>
+    <p class="sub">Nove dias de oração para chegarmos juntos ao dia 12, festa da Padroeira do Brasil.</p>
+    <div class="card">
+      <div class="arch"><img src="img/aparecida.webp" alt="Nossa Senhora Aparecida"></div>
+      <div>
+        <span class="free">GRATUITA</span>
+        <h3>A novena completa em PDF</h3>
+        <p>As orações de cada dia, em letra grande, para ler no celular ou imprimir e rezar em família.</p>
+        <a class="btn btn-gold btn-full" data-track="novena" href="#" id="btnNovena">Baixar a novena (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="santinhos">
+  <div class="wrap">
+    <span class="eyebrow">SANTINHOS DIGITAIS</span>
+    <h2>Escolha o seu santo</h2>
+    <p class="sub">Cada santo vem com a arte em alta resolução e tudo pronto para imprimir: santinho, quadro, cartão de oração e papel de parede. Nossa Senhora Aparecida pode ser comprada sozinha; os outros vêm na coleção.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="colecao" id="colecao">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--dourado)">PARA QUEM COLECIONA</span>
+    <h2>A coleção completa</h2>
+    <p class="sub">Os sete santos num só lugar, com acesso a todos os arquivos na área de membros.</p>
+    <div class="box">
+      <div class="thumbs" id="thumbs"></div>
+      <div class="serif" id="colNome" style="font-size:26px"></div>
+      <div class="preco" id="colPreco"></div>
+      <span class="selo" id="colSelo"></span>
+      <ul id="inclui"></ul>
+      <a class="btn btn-gold btn-full" data-track="colecao" href="#" id="btnColecao">Quero a coleção completa</a>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <span class="eyebrow">É SIMPLES</span>
+    <h2>Como funciona</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Escolha e pague</h3><p>Pix ou cartão, em ambiente seguro da Kiwify, a mesma plataforma de milhares de cursos e produtos digitais no Brasil.</p></div>
+      <div class="step"><div class="n">2</div><h3>Receba na hora</h3><p>Os arquivos chegam por e‑mail e ficam guardados na sua área de membros, para baixar quantas vezes quiser.</p></div>
+      <div class="step"><div class="n">3</div><h3>Imprima ou use no celular</h3><p>Leve na gráfica ou imprima em casa. O quadro fica lindo emoldurado; o santinho, na carteira ou na Bíblia.</p></div>
+    </div>
+    <div class="trust">
+      <span>Pagamento seguro</span><span>Pix e cartão</span><span>Entrega imediata</span><span>Atendimento pelo WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<section class="zap" id="whatsapp">
+  <div class="wrap">
+    <div class="box">
+      <h2>A oração do dia no seu WhatsApp</h2>
+      <p>Todo dia cedo, um santo e uma oração curta para começar bem. É gratuito e você sai quando quiser.</p>
+      <div class="btns">
+        <a class="btn btn-wa btn-full" data-track="canal" href="#" id="btnCanal">Entrar no canal do WhatsApp</a>
+        <a class="btn btn-line btn-full" data-track="conversa" href="#" id="btnConversa" hidden>Falar com a gente</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg class="sym" style="color:var(--dourado)"><use href="#simbolo"/></svg>
+  <div class="serif" style="font-size:22px;color:var(--marfim)">Meu Santinho</div>
+  <div class="social">
+    <a id="lnkIg" href="#">Instagram</a><a id="lnkFb" href="#">Facebook</a><a id="lnkTt" href="#">TikTok</a>
+  </div>
+  <div>© <span id="ano"></span> Meu Santinho · Arte sacra digital · meusantinhobr.com.br</div>
+</footer>
+
+<script>
+(function(){
+  const c = CONFIG;
+  // ---- UTM: repassa a origem (anúncio → site → Kiwify) ----
+  const inc = new URLSearchParams(location.search);
+  const src = inc.get("utm_source") || "site";
+  const med = inc.get("utm_medium") || "landing";
+  const camp = inc.get("utm_campaign") || "";
+  function utm(url, content){
+    if(!url || url==="#") return "#";
+    const u = new URL(url);
+    u.searchParams.set("utm_source", src);
+    u.searchParams.set("utm_medium", med);
+    if(camp) u.searchParams.set("utm_campaign", camp);
+    u.searchParams.set("utm_content", content);
+    return u.toString();
+  }
+  // ---- kits ----
+  const grid = document.getElementById("grid");
+  const thumbs = document.getElementById("thumbs");
+  c.kits.forEach(k=>{
+    const el = document.createElement("article");
+    el.className="kit";
+    el.innerHTML = `
+      ${k.destaque ? '<span class="badge">LANÇAMENTO</span>' : ''}
+      <div class="arch"><img src="img/${k.slug}.webp" alt="${k.nome}"></div>
+      <div class="body">
+        <h3>${k.nome}</h3>
+        <div class="linha">${k.linha}</div>
+        ${k.url ? `<div class="preco">${k.de ? `<small>${k.de}</small>` : ''}${k.preco}</div>
+        <a class="btn ${k.destaque?'btn-gold':'btn-blue'} btn-full" data-track="kit-${k.slug}" href="${utm(k.url,'kit-'+k.slug)}">Quero este santinho</a>`
+        : `<div class="preco" style="font-size:17px;color:#777;font-weight:400">Incluído na coleção</div>
+        <a class="btn btn-line btn-full" href="#colecao">Vem na coleção</a>`}
+      </div>`;
+    grid.appendChild(el);
+    const t=document.createElement("span"); t.innerHTML=`<img src="img/${k.slug}.webp" alt="">`; thumbs.appendChild(t);
+  });
+  // ---- coleção ----
+  document.getElementById("colNome").textContent = c.colecao.nome;
+  document.getElementById("colPreco").innerHTML = (c.colecao.de?`<small style="font-size:18px;color:rgba(247,241,227,.6);text-decoration:line-through;margin-right:8px">${c.colecao.de}</small>`:'') + c.colecao.preco;
+  document.getElementById("colSelo").textContent = c.colecao.selo || "";
+  document.getElementById("inclui").innerHTML = c.kitInclui.map(i=>`<li>${i}</li>`).join("") + "<li>Os 7 santos, com novos santos por vir</li>";
+  document.getElementById("btnColecao").href = utm(c.colecao.url,"colecao");
+  // ---- links fixos ----
+  document.getElementById("btnNovena").href = c.novenaUrl;
+  document.getElementById("btnCanal").href = c.whatsappChannel;
+  const conv = document.getElementById("btnConversa");
+  if(c.whatsappNumber){ conv.hidden=false; conv.href="https://wa.me/"+c.whatsappNumber+"?text="+encodeURIComponent("Olá! Vim pelo site do Meu Santinho."); }
+  document.getElementById("lnkIg").href=c.instagram; document.getElementById("lnkFb").href=c.facebook; document.getElementById("lnkTt").href=c.tiktok;
+  document.getElementById("ano").textContent = new Date().getFullYear();
+  // ---- Pixel da Meta ----
+  if(c.pixelId){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', c.pixelId); fbq('track','PageView');
+    document.querySelectorAll("[data-track]").forEach(a=>a.addEventListener("click",()=>{
+      const id=a.dataset.track;
+      if(id.startsWith("kit-")||id==="colecao") fbq('track','InitiateCheckout',{content_name:id});
+      else if(id==="novena") fbq('track','Lead',{content_name:'novena'});
+      else fbq('trackCustom','ClickWhatsApp',{content_name:id});
+    }));
+  }
+})();
+</script>
+</body>
+</html>
