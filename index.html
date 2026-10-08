@@ -30,7 +30,7 @@ const CONFIG = {
     preco: "R$ 39,90",
     de: "",             // preço "de" riscado, opcional
     url: "https://pay.kiwify.com.br/nx4poR0",
-    selo: "Pré-venda · 7 santos · acesso completo no dia 12"
+    selo: "10 santos · acesso completo no dia 12"
   },
   // Só Aparecida tem link próprio. Os outros ficam com url vazia e o botão leva para a coleção.
   kits: [
@@ -41,6 +41,9 @@ const CONFIG = {
     { slug: "sao-miguel",       nome: "São Miguel Arcanjo",       linha: "29 de setembro · proteção",          preco: "", url: "" },
     { slug: "santa-teresinha",  nome: "Santa Teresinha",          linha: "1º de outubro · das pequenas coisas", preco: "", url: "" },
     { slug: "sao-francisco",    nome: "São Francisco de Assis",   linha: "4 de outubro · da paz",              preco: "", url: "" },
+    { slug: "santa-edwiges",    nome: "Santa Edwiges",            linha: "16 de outubro · dos endividados",    preco: "", url: "" },
+    { slug: "sao-judas",        nome: "São Judas Tadeu",          linha: "28 de outubro · causas impossíveis", preco: "", url: "" },
+    { slug: "sao-bento",        nome: "São Bento",                linha: "11 de julho · proteção contra o mal", preco: "", url: "" },
   ],
   kitInclui: [
     "Arte em alta resolução (300 dpi)",
@@ -212,7 +215,7 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
   <div class="wrap">
     <span class="eyebrow" style="color:var(--dourado)">PARA QUEM COLECIONA</span>
     <h2>A coleção completa</h2>
-    <p class="sub">Os sete santos num só lugar, com acesso a todos os arquivos digitais na área de membros, para imprimir quando e quantas vezes quiser.</p>
+    <p class="sub">Os dez santos num só lugar, com acesso a todos os arquivos digitais na área de membros, para imprimir quando e quantas vezes quiser.</p>
     <div class="box">
       <div class="thumbs" id="thumbs"></div>
       <div class="serif" id="colNome" style="font-size:26px"></div>
@@ -303,7 +306,7 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
   document.getElementById("colNome").textContent = c.colecao.nome;
   document.getElementById("colPreco").innerHTML = (c.colecao.de?`<small style="font-size:18px;color:rgba(247,241,227,.6);text-decoration:line-through;margin-right:8px">${c.colecao.de}</small>`:'') + c.colecao.preco;
   document.getElementById("colSelo").textContent = c.colecao.selo || "";
-  document.getElementById("inclui").innerHTML = c.kitInclui.map(i=>`<li>${i}</li>`).join("") + "<li>Os 7 santos, com novos santos por vir</li>";
+  document.getElementById("inclui").innerHTML = c.kitInclui.map(i=>`<li>${i}</li>`).join("") + "<li>Os 10 santos, com novos santos por vir</li>";
   document.getElementById("btnColecao").href = utm(c.colecao.url,"colecao");
   // ---- links fixos ----
   document.getElementById("btnNovena").href = c.novenaUrl;
