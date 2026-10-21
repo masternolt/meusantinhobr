@@ -21,7 +21,9 @@ const CONFIG = {
   pixelId: "1418781117031482",
   novenaUrl: "/novena/",
   whatsappChannel: "https://whatsapp.com/channel/0029VbDoMUlGJP8LW8zWIr1F",
-  whatsappNumber: "",   // ex.: "5511999999999" — deixe vazio para esconder o botão de conversa
+  whatsappNumber: "5521994824162",   // deixe vazio para esconder o botão de conversa
+  novenaAlmasUrl: "/novena-almas/Novena-pelas-Almas-Meu-Santinho.pdf",
+  novenaAlmasWa: "https://wa.me/5521994824162?text=Quero%20a%20Novena%20pelas%20Almas",
   instagram: "https://instagram.com/meu.santinho.br",
   facebook: "https://facebook.com/meusantinhobr",
   tiktok: "https://tiktok.com/@meusantinhobr",
@@ -180,10 +182,28 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
   <div class="rule"></div>
   <p>Arte sacra em alta resolução, com o santo e a oração de cada dia. Arquivos digitais para você imprimir, emoldurar, guardar na carteira ou levar no celular.</p>
   <div class="cta">
-    <a class="btn btn-gold" href="#novena">📿 Novena de Aparecida grátis</a>
+    <a class="btn btn-gold" href="#novena-almas">🕯️ Novena pelas Almas grátis</a>
     <a class="btn btn-line" style="color:var(--marfim);border-color:rgba(247,241,227,.6)" href="#santinhos">Ver os santinhos</a>
   </div>
 </header>
+
+<section class="novena" id="novena-almas">
+  <div class="wrap">
+    <span class="eyebrow">24 DE OUTUBRO A 1º DE NOVEMBRO</span>
+    <h2>Novena pelas Almas</h2>
+    <p class="sub">Nove dias de oração por quem partiu, até a véspera de Finados. Cinco minutos por dia, em casa, sozinho ou em família.</p>
+    <div class="card">
+      <div class="arch"><img src="img/sagrado-coracao.webp" alt="Sagrado Coração de Jesus"></div>
+      <div>
+        <span class="free">GRATUITA</span>
+        <h3>A novena completa em PDF, com letra grande</h3>
+        <p>Um versículo, uma reflexão curta e uma intenção para cada dia. Para ler no celular ou imprimir.</p>
+        <a class="btn btn-gold btn-full" data-track="novena-almas" href="#" id="btnNovenaAlmas">Baixar a novena (PDF)</a>
+        <a class="btn btn-wa btn-full" data-track="novena-almas-wa" href="#" id="btnNovenaAlmasWa" style="margin-top:10px">Pedir pelo WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="novena" id="novena">
   <div class="wrap">
@@ -310,6 +330,8 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
   document.getElementById("btnColecao").href = utm(c.colecao.url,"colecao");
   // ---- links fixos ----
   document.getElementById("btnNovena").href = c.novenaUrl;
+  document.getElementById("btnNovenaAlmas").href = c.novenaAlmasUrl;
+  document.getElementById("btnNovenaAlmasWa").href = c.novenaAlmasWa;
   document.getElementById("btnCanal").href = c.whatsappChannel;
   const conv = document.getElementById("btnConversa");
   if(c.whatsappNumber){ conv.hidden=false; conv.href="https://wa.me/"+c.whatsappNumber+"?text="+encodeURIComponent("Olá! Vim pelo site do Meu Santinho."); }
@@ -322,7 +344,7 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
     document.querySelectorAll("[data-track]").forEach(a=>a.addEventListener("click",()=>{
       const id=a.dataset.track;
       if(id.startsWith("kit-")||id==="colecao") fbq('track','InitiateCheckout',{content_name:id});
-      else if(id==="novena") fbq('track','Lead',{content_name:'novena'});
+      else if(id==="novena"||id==="novena-almas") fbq('track','Lead',{content_name:id});
       else fbq('trackCustom','ClickWhatsApp',{content_name:id});
     }));
   }
