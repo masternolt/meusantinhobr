@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meu Santinho · Santinhos para colecionar, rezar e presentear</title>
-<meta name="description" content="Arte sacra digital em alta resolução: santinhos, artes para emoldurar e orações para imprimir ou usar no celular. Produto digital, entrega por e-mail. Novena de Nossa Senhora Aparecida gratuita.">
+<title>Meu Santinho · O santinho com o nome de quem você ama</title>
+<meta name="description" content="Receba de graça, no WhatsApp, um santinho com o nome de quem você ama. Lembrança de 7º dia com nome e foto e oração narrada com o nome.">
 <meta property="og:title" content="Meu Santinho">
-<meta property="og:description" content="Santinhos católicos digitais para imprimir, colecionar, rezar e presentear. Novena de Aparecida grátis.">
-<meta property="og:image" content="https://meusantinhobr.com.br/img/aparecida.webp">
+<meta property="og:description" content="O santinho com o nome de quem você ama. De graça, no WhatsApp.">
+<meta property="og:image" content="https://meusantinhobr.com.br/img/og-vitrine.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="img/perfil.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap">
 
 <!-- ================================================================
      CONFIGURAÇÃO — edite só este bloco
@@ -19,146 +19,156 @@
 <script>
 const CONFIG = {
   pixelId: "1418781117031482",
-  novenaUrl: "/novena/",
-  whatsappChannel: "https://whatsapp.com/channel/0029VbDoMUlGJP8LW8zWIr1F",
-  whatsappNumber: "5521994824162",   // deixe vazio para esconder o botão de conversa
-  novenaAlmasUrl: "/novena-almas/Novena-pelas-Almas-Meu-Santinho.pdf",
-  novenaAlmasWa: "https://wa.me/5521994824162?text=Quero%20a%20Novena%20pelas%20Almas",
+
+  // Links curtos do Coreto. Cada botão vira  linkBase + slug + "?o=" + origem
+  // Se usarLinksCurtos for false, os botões abrem o WhatsApp direto (sem contar cliques no Coreto).
+  usarLinksCurtos: true,
+  linkBase: "https://coreto.meusantinhobr.com.br/s/",
+  origem: "site",
+  whatsappNumber: "5521994824162",
+
+  canal: "https://whatsapp.com/channel/0029VbEBhugEquiOvGtfGx1k",
   instagram: "https://instagram.com/meu.santinho.br",
   facebook: "https://facebook.com/meusantinhobr",
   tiktok: "https://tiktok.com/@meusantinhobr",
-  colecao: {
-    nome: "Coleção Padroeiros do Brasil",
-    preco: "R$ 39,90",
-    de: "",             // preço "de" riscado, opcional
-    url: "https://pay.kiwify.com.br/nx4poR0",
-    selo: "10 santos · novos santos entram sem pagar mais"
+
+  // slug = o mesmo do link curto. texto = mensagem pronta (usada só quando usarLinksCurtos é false).
+  botoes: {
+    santinho:  { slug: "santinho",       texto: "Quero o meu santinho de oração" },
+    lembranca: { slug: "lembranca",      texto: "Quero uma lembrança de 7º dia" },
+    oracao:    { slug: "oracao-narrada", texto: "Quero a oração narrada com o nome" }
   },
-  // Só Aparecida tem link próprio. Os outros ficam com url vazia e o botão leva para a coleção.
-  kits: [
-    { slug: "aparecida",        nome: "Nossa Senhora Aparecida", linha: "Padroeira do Brasil · 12 de outubro", preco: "R$ 19,90", url: "https://pay.kiwify.com.br/csjL1Mp", destaque: true },
-    { slug: "sagrado-coracao",  nome: "Sagrado Coração de Jesus", linha: "Primeiras sextas-feiras",            preco: "", url: "" },
-    { slug: "santo-antonio",    nome: "Santo Antônio",            linha: "13 de junho · casamenteiro",         preco: "", url: "" },
-    { slug: "padre-pio",        nome: "São Padre Pio",            linha: "23 de setembro",                     preco: "", url: "" },
-    { slug: "sao-miguel",       nome: "São Miguel Arcanjo",       linha: "29 de setembro · proteção",          preco: "", url: "" },
-    { slug: "santa-teresinha",  nome: "Santa Teresinha",          linha: "1º de outubro · das pequenas coisas", preco: "", url: "" },
-    { slug: "sao-francisco",    nome: "São Francisco de Assis",   linha: "4 de outubro · da paz",              preco: "", url: "" },
-    { slug: "santa-edwiges",    nome: "Santa Edwiges",            linha: "16 de outubro · dos endividados",    preco: "", url: "" },
-    { slug: "sao-judas",        nome: "São Judas Tadeu",          linha: "28 de outubro · causas impossíveis", preco: "", url: "" },
-    { slug: "sao-bento",        nome: "São Bento",                linha: "11 de julho · proteção contra o mal", preco: "", url: "" },
+
+  // Santos da grade. slug = o do catálogo do Coreto. Para trocar ou incluir um santo, edite aqui
+  // e coloque a imagem em img/santo-<slug>.webp (480 x 640).
+  santos: [
+    { slug: "nossa-senhora-aparecida", nome: "Nossa Senhora Aparecida" },
+    { slug: "sagrado-coracao",         nome: "Sagrado Coração de Jesus" },
+    { slug: "santo-antonio",           nome: "Santo Antônio" },
+    { slug: "sao-judas-tadeu",         nome: "São Judas Tadeu" },
+    { slug: "sao-jose",                nome: "São José" },
+    { slug: "sao-miguel",              nome: "São Miguel Arcanjo" }
   ],
-  kitInclui: [
-    "Arte em alta resolução (300 dpi)",
-    "Santinho A5 para imprimir (frente e verso)",
-    "Arte em A4 e A3 para imprimir e emoldurar",
-    "Papel de parede para o celular",
-    "Cartão de oração A6 para imprimir"
-  ]
+  totalSantos: 37,
+
+  precoLembranca: "A partir de R$ 10, por Pix",
+  precoOracao: "R$ 10, por Pix"
 };
 </script>
 <!-- ================================================================ -->
 
 <style>
 :root{
-  --azul:#1F3A6E; --dourado:#C9A24B; --marfim:#F7F1E3; --bordo:#7A1F2B; --grafite:#2B2B2B;
-  --marfim2:#EFE6D2; --linha:#D9CDB0;
+  --azul:#1F3A6E; --azul-esc:#16294F; --dourado:#C9A24B; --dourado-claro:#D9B866;
+  --marfim:#F7F1E3; --marfim2:#EFE6D2; --papel:#FFFDF7; --linha:#D9CDB0;
+  --bordo:#7A1F2B; --grafite:#2B2B2B; --cinza:#4A4A4A; --verde:#1B6B43; --verde-esc:#15563A;
 }
 *{box-sizing:border-box}
-[hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--marfim);color:var(--grafite);font-family:'Lato',Verdana,sans-serif;font-size:19px;line-height:1.55}
-a{color:inherit}
-h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.12;margin:0}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:19px;text-decoration:none;border:2px solid transparent;transition:transform .08s ease,box-shadow .2s;cursor:pointer}
+body{margin:0;background:var(--marfim);color:var(--grafite);font-family:'Lato',Verdana,sans-serif;font-size:18px;line-height:1.55}
+img{max-width:100%;height:auto;display:block}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;margin:0;color:var(--azul)}
+h1{font-size:34px;line-height:1.15}
+h2{font-size:28px;line-height:1.2}
+p{margin:0}
+.wrap{max-width:440px;margin:0 auto;padding:0 20px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--bordo)}
+.small{font-size:16px;color:var(--cinza)}
+.preco{font-weight:700;font-size:20px;color:var(--azul)}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:12px 20px;border-radius:12px;border:2px solid transparent;font-weight:700;font-size:19px;text-decoration:none;text-align:center;cursor:pointer;transition:background .15s ease,transform .08s ease}
 .btn:active{transform:scale(.98)}
-.btn-gold{background:var(--dourado);color:var(--azul);border-color:var(--dourado)}
-.btn-gold:hover{box-shadow:0 6px 18px rgba(201,162,75,.4)}
-.btn-blue{background:var(--azul);color:var(--marfim);border-color:var(--azul)}
-.btn-blue:hover{box-shadow:0 6px 18px rgba(31,58,110,.35)}
-.btn-line{background:transparent;color:var(--azul);border-color:var(--azul)}
-.btn-wa{background:#25D366;color:#fff;border-color:#25D366}
-.btn-full{width:100%}
+.btn:focus-visible,.santo:focus-visible,.play:focus-visible,footer a:focus-visible{outline:3px solid var(--dourado);outline-offset:3px}
+.btn svg{flex:none}
+.btn-wa{background:var(--verde);color:#fff}
+.btn-wa:hover{background:var(--verde-esc)}
+.btn-gold{background:var(--dourado);color:var(--azul)}
+.btn-gold:hover{background:var(--dourado-claro)}
+.btn-blue{background:var(--azul);color:var(--marfim)}
+.btn-blue:hover{background:var(--azul-esc)}
+.btn-line{background:transparent;color:var(--azul);border-color:var(--azul);min-height:56px;font-size:18px}
+.btn-line:hover{background:rgba(31,58,110,.07)}
 
-/* topo */
-header.hero{background:var(--azul);color:var(--marfim);text-align:center;padding:44px 20px 40px;position:relative;overflow:hidden}
-header.hero::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(ellipse at center,rgba(201,162,75,.18),transparent 60%);pointer-events:none}
-.hero .sym{width:96px;height:120px;margin:0 auto 14px;display:block}
-.hero h1{font-size:46px;color:var(--marfim)}
-.hero .tag{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;color:var(--dourado);font-size:24px;margin:10px 0 18px}
-.hero p{max-width:600px;margin:0 auto 26px;font-size:20px;opacity:.95}
-.hero .rule{width:80px;height:2px;background:var(--dourado);margin:0 auto 18px}
-.hero .cta{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto;position:relative;z-index:1}
+header.topo{border-bottom:1px solid var(--linha)}
+header.topo .wrap{display:flex;align-items:center;gap:10px;padding-top:14px;padding-bottom:14px}
+header.topo svg{width:30px;height:37px;color:var(--azul);flex:none}
+header.topo span{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:22px;color:var(--azul)}
 
-/* seções */
-section{padding:48px 0}
-section h2{font-size:34px;color:var(--azul);text-align:center;margin-bottom:8px}
-section .sub{text-align:center;color:#555;max-width:640px;margin:0 auto 30px;font-size:19px}
-.eyebrow{display:block;text-align:center;font-size:14px;letter-spacing:4px;font-weight:700;color:var(--bordo);margin-bottom:10px}
+.hero{padding:28px 0 36px}
+.hero .exemplo{width:240px;aspect-ratio:9/16;object-fit:cover;align-self:center;margin:8px 0;border-radius:14px;box-shadow:0 10px 28px rgba(31,58,110,.28)}
+.hero .small{text-align:center}
 
-/* novena */
-.novena{background:var(--marfim2);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
-.novena .card{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:22px;max-width:760px;margin:0 auto}
-.novena .arch{width:150px;height:200px;border:4px solid var(--dourado);border-radius:75px 75px 0 0;overflow:hidden;background:var(--azul)}
-.novena .arch img{width:100%;height:100%;object-fit:cover;display:block}
-.novena h3{font-size:26px;color:var(--azul);margin-bottom:6px}
-.novena p{margin:0 0 14px;color:#444}
-.free{display:inline-block;background:var(--bordo);color:#fff;font-size:13px;letter-spacing:2px;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:8px}
+.santos{background:var(--marfim2);padding:36px 0}
+.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.santo{display:flex;flex-direction:column;background:var(--papel);border:1px solid var(--linha);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--azul);transition:box-shadow .15s ease,transform .08s ease}
+.santo:hover{box-shadow:0 6px 18px rgba(31,58,110,.18)}
+.santo:active{transform:scale(.98)}
+.santo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.santo .rot{display:flex;flex-direction:column;gap:4px;padding:10px 12px 12px}
+.santo .nome{font-weight:700;font-size:17px;line-height:1.25}
+.santo .pedir{font-size:15px;font-weight:700;color:var(--verde)}
 
-/* grade */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
-.kit{background:#fff;border:1px solid var(--linha);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-align:center;position:relative}
-.kit .arch{margin:22px auto 0;width:180px;height:240px;border:4px solid var(--dourado);border-radius:90px 90px 0 0;overflow:hidden;background:var(--azul)}
-.kit .arch img{width:100%;height:100%;object-fit:cover;display:block}
-.kit .body{padding:16px 18px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
-.kit h3{font-size:24px;color:var(--azul)}
-.kit .linha{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;color:var(--bordo);font-size:17px}
-.kit .preco{font-size:26px;font-weight:700;color:var(--grafite);margin:8px 0 10px}
-.kit .preco small{font-size:15px;color:#777;font-weight:400;text-decoration:line-through;margin-right:8px}
-.kit .btn{margin-top:auto}
-.badge{position:absolute;top:14px;left:14px;background:var(--bordo);color:#fff;font-size:12px;letter-spacing:2px;font-weight:700;padding:5px 10px;border-radius:6px}
+.lembranca{background:var(--azul);color:var(--marfim);padding:40px 0}
+.lembranca h2{color:var(--marfim)}
+.lembranca .eyebrow{color:var(--dourado-claro)}
+.lembranca .preco{color:var(--marfim)}
+.lembranca .small{color:#E4DCC8}
+.exemplos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:8px 0}
+.exemplos img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px}
 
-/* coleção */
-.colecao{background:var(--azul);color:var(--marfim)}
-.colecao h2{color:var(--marfim)}
-.colecao .sub{color:rgba(247,241,227,.85)}
-.colecao .box{max-width:720px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,75,.5);border-radius:18px;padding:28px;text-align:center}
-.colecao .thumbs{display:flex;justify-content:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
-.colecao .thumbs span{width:54px;height:72px;border:2px solid var(--dourado);border-radius:27px 27px 0 0;overflow:hidden;display:block}
-.colecao .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-.colecao .preco{font-size:34px;font-weight:700;margin:6px 0 4px}
-.colecao .selo{display:inline-block;color:var(--dourado);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:19px;margin-bottom:16px}
-.colecao ul{list-style:none;padding:0;margin:0 auto 20px;max-width:420px;text-align:left}
-.colecao li{padding:6px 0 6px 30px;position:relative}
-.colecao li::before{content:"✦";color:var(--dourado);position:absolute;left:6px}
+.oracao{padding:40px 0}
+.player{display:flex;align-items:center;gap:14px;padding:16px;margin:8px 0;background:var(--papel);border:1px solid var(--linha);border-radius:14px}
+.play{flex:none;width:56px;height:56px;border-radius:50%;border:none;background:var(--azul);color:var(--marfim);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.play:hover{background:var(--azul-esc)}
+.play .ico-pause{display:none}
+.play.tocando .ico-play{display:none}
+.play.tocando .ico-pause{display:block}
+.player .meio{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.player .titulo{font-weight:700;font-size:17px;color:var(--azul)}
+.barra{height:8px;border-radius:4px;background:#C9D0DE;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--azul);border-radius:4px}
+.player .tempo{flex:none;font-size:15px;color:var(--cinza);font-variant-numeric:tabular-nums}
 
-/* como funciona */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto}
-.step{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:22px;text-align:center}
-.step .n{width:44px;height:44px;border-radius:50%;background:var(--dourado);color:var(--azul);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Playfair Display',Georgia,serif}
-.step h3{font-size:21px;color:var(--azul);margin-bottom:6px}
-.step p{margin:0;color:#444;font-size:17px}
-.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px;margin-top:26px;color:#555;font-size:16px}
-.trust span::before{content:"✓ ";color:var(--dourado);font-weight:700}
+.canal{background:var(--marfim2);padding:36px 0}
+.canal .btn{margin-top:6px}
 
-/* whatsapp */
-.zap{background:var(--marfim2);border-top:1px solid var(--linha)}
-.zap .box{max-width:560px;margin:0 auto;text-align:center}
-.zap .box p{color:#444}
-.zap .btns{display:flex;flex-direction:column;gap:12px}
+.como{padding:36px 0 40px}
+.como .stack{gap:20px}
+.passo{display:flex;gap:14px;align-items:flex-start}
+.passo .n{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--azul);color:var(--azul);font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center}
+.passo b{display:block;color:var(--azul)}
 
-footer{background:var(--azul);color:rgba(247,241,227,.85);text-align:center;padding:34px 20px;font-size:16px}
-footer .social{display:flex;justify-content:center;gap:18px;margin:12px 0 14px;flex-wrap:wrap}
-footer .social a{color:var(--marfim);text-decoration:none;font-weight:700}
-footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
+footer{background:var(--azul);color:var(--marfim);padding:32px 0 36px}
+footer .stack{gap:10px}
+footer .marca{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:22px}
+footer .links{display:flex;flex-wrap:wrap;column-gap:22px}
+footer a{display:flex;align-items:center;min-height:44px;color:var(--marfim);font-size:17px}
+footer a:hover{color:var(--dourado-claro)}
+footer .legais a{font-size:16px}
+footer .copy{margin-top:6px;font-size:15px;color:#E4DCC8}
 
-@media (max-width:560px){
-  body{font-size:18px}
-  .hero h1{font-size:38px}
-  .novena .card{grid-template-columns:1fr;text-align:center}
-  .novena .arch{margin:0 auto}
-  section{padding:38px 0}
-  section h2{font-size:29px}
+@media (min-width:760px){
+  .wrap{max-width:920px}
+  h1{font-size:46px}
+  h2{font-size:34px}
+  .hero{padding:56px 0}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;column-gap:56px;row-gap:24px}
+  .hero .texto{display:flex;flex-direction:column;gap:18px;grid-column:1}
+  .hero .texto:first-child,.lembranca .texto:first-child{align-self:end}
+  .hero .texto:last-child,.lembranca .texto:last-child{align-self:start}
+  .hero .exemplo{width:300px;margin:0;grid-column:2;grid-row:1 / span 2;align-self:center}
+  .hero .small{text-align:left}
+  .hero .btn,.santos .btn-line,.oracao .btn,.canal .btn,.lembranca .btn{align-self:flex-start;min-width:320px}
+  .grade{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .lembranca .wrap{display:grid;grid-template-columns:minmax(0,1fr) 400px;column-gap:56px;row-gap:24px}
+  .lembranca .exemplos{grid-column:2;grid-row:1 / span 2;margin:0;align-self:center}
+  .lembranca .texto{grid-column:1}
+  .oracao .wrap,.canal .wrap,.como .wrap{max-width:640px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.santo{transition:none}
 }
 </style>
 </head>
@@ -173,181 +183,196 @@ footer .sym{width:30px;height:38px;display:block;margin:0 auto 8px}
     <path d="M72 78 H85 M66 88.4 L72.5 99.6 M54 88.4 L47.5 99.6 M48 78 H35 M54 67.6 L47.5 56.4 M66 67.6 L72.5 56.4" stroke-width="2.5"/>
     <path d="M70.4 84 L77.3 88 M60 90 V98 M49.6 84 L42.7 88 M49.6 72 L42.7 68 M60 66 V58 M70.4 72 L77.3 68" stroke-width="1.8"/>
   </symbol>
+  <symbol id="ico-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.1A8.5 8.5 0 1 1 21 11.5z"/>
+  </symbol>
 </svg>
 
-<header class="hero">
-  <svg class="sym" style="color:var(--dourado)"><use href="#simbolo"/></svg>
-  <h1>Meu Santinho</h1>
-  <div class="tag">Para colecionar, rezar e presentear</div>
-  <div class="rule"></div>
-  <p>Arte sacra em alta resolução, com o santo e a oração de cada dia. Arquivos digitais para você imprimir, emoldurar, guardar na carteira ou levar no celular.</p>
-  <div class="cta">
-    <a class="btn btn-gold" href="#novena-almas">🕯️ Novena pelas Almas grátis</a>
-    <a class="btn btn-line" style="color:var(--marfim);border-color:rgba(247,241,227,.6)" href="#santinhos">Ver os santinhos</a>
+<header class="topo">
+  <div class="wrap">
+    <svg aria-hidden="true"><use href="#simbolo"/></svg>
+    <span>Meu Santinho</span>
   </div>
 </header>
 
-<section class="novena" id="novena-almas">
-  <div class="wrap">
-    <span class="eyebrow">24 DE OUTUBRO A 1º DE NOVEMBRO</span>
-    <h2>Novena pelas Almas</h2>
-    <p class="sub">Nove dias de oração por quem partiu, até a véspera de Finados. Cinco minutos por dia, em casa, sozinho ou em família.</p>
-    <div class="card">
-      <div class="arch"><img src="img/sagrado-coracao.webp" alt="Sagrado Coração de Jesus"></div>
-      <div>
-        <span class="free">GRATUITA</span>
-        <h3>A novena completa em PDF, com letra grande</h3>
-        <p>Um versículo, uma reflexão curta e uma intenção para cada dia. Para ler no celular ou imprimir.</p>
-        <a class="btn btn-gold btn-full" data-track="novena-almas" href="#" id="btnNovenaAlmas">Baixar a novena (PDF)</a>
-        <a class="btn btn-wa btn-full" data-track="novena-almas-wa" href="#" id="btnNovenaAlmasWa" style="margin-top:10px">Pedir pelo WhatsApp</a>
-      </div>
+<main>
+<section class="hero">
+  <div class="wrap stack">
+    <div class="texto stack">
+      <p class="eyebrow">DE GRAÇA, NO WHATSAPP</p>
+      <h1>O santinho com o nome de quem você ama</h1>
+      <p>Escolha o santo, diga o nome e receba na hora uma oração com o nome da pessoa. É um presente nosso.</p>
+    </div>
+    <img class="exemplo" src="img/santinho-exemplo.webp" width="720" height="1280" alt="Exemplo de santinho de São Bento com o nome Tereza">
+    <div class="texto stack">
+      <a class="btn btn-wa" data-botao="santinho" data-track="santinho-topo" href="#">
+        <svg aria-hidden="true" width="24" height="24"><use href="#ico-zap"/></svg>
+        <span>Receber meu santinho</span>
+      </a>
+      <p class="small">Um santinho por semana para cada número de WhatsApp.</p>
     </div>
   </div>
 </section>
 
-<section class="novena" id="novena">
-  <div class="wrap">
-    <span class="eyebrow">REZE QUANDO QUISER</span>
-    <h2>Novena de Nossa Senhora Aparecida</h2>
-    <p class="sub">Nove dias de oração à Padroeira do Brasil. Você pode rezar em qualquer época do ano, sozinho ou em família.</p>
-    <div class="card">
-      <div class="arch"><img src="img/aparecida.webp" alt="Nossa Senhora Aparecida"></div>
-      <div>
-        <span class="free">GRATUITA</span>
-        <h3>A novena completa em PDF</h3>
-        <p>As orações de cada dia, em letra grande, para ler no celular ou imprimir e rezar em família.</p>
-        <a class="btn btn-gold btn-full" data-track="novena" href="#" id="btnNovena">Baixar a novena (PDF)</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="santinhos">
-  <div class="wrap">
-    <span class="eyebrow">SANTINHOS DIGITAIS</span>
+<section class="santos" id="santos">
+  <div class="wrap stack" style="gap:16px">
     <h2>Escolha o seu santo</h2>
-    <p class="sub">Cada santo vem com a arte em alta resolução e tudo pronto para imprimir: santinho, arte para emoldurar, cartão de oração e papel de parede. É um produto digital: você recebe os arquivos por e‑mail e nada é enviado pelo correio. Nossa Senhora Aparecida pode ser comprada sozinha; os outros vêm na coleção.</p>
-    <div class="grid" id="grid"></div>
+    <p>Toque no santo. O WhatsApp abre com o pedido pronto, é só enviar.</p>
+    <div class="grade" id="grade"></div>
+    <p style="margin-top:4px">Temos <span id="totalSantos">37</span> santos. Não achou o seu? Peça pelo nome.</p>
+    <a class="btn btn-line" data-botao="santinho" data-track="santinho-outro" href="#">Pedir outro santo</a>
   </div>
 </section>
 
-<section class="colecao" id="colecao">
-  <div class="wrap">
-    <span class="eyebrow" style="color:var(--dourado)">PARA QUEM COLECIONA</span>
-    <h2>A coleção completa</h2>
-    <p class="sub">Os dez santos num só lugar, com acesso a todos os arquivos digitais na área de membros, para imprimir quando e quantas vezes quiser.</p>
-    <div class="box">
-      <div class="thumbs" id="thumbs"></div>
-      <div class="serif" id="colNome" style="font-size:26px"></div>
-      <div class="preco" id="colPreco"></div>
-      <span class="selo" id="colSelo"></span>
-      <ul id="inclui"></ul>
-      <a class="btn btn-gold btn-full" data-track="colecao" href="#" id="btnColecao">Quero a coleção completa</a>
+<section class="lembranca" id="lembranca">
+  <div class="wrap stack">
+    <div class="texto stack">
+      <p class="eyebrow">LEMBRANÇA DE 7º DIA</p>
+      <h2>Uma lembrança com o nome e a foto de quem partiu</h2>
+      <p>Para enviar à família, colocar no status do WhatsApp e imprimir para a missa.</p>
+    </div>
+    <div class="exemplos">
+      <img src="img/lembranca-com-foto.webp" width="600" height="1067" loading="lazy" alt="Exemplo de lembrança com foto, nome e datas">
+      <img src="img/lembranca-sem-foto.webp" width="600" height="1067" loading="lazy" alt="Exemplo de lembrança só com nome e datas">
+    </div>
+    <div class="texto stack">
+      <p class="preco" id="precoLembranca"></p>
+      <a class="btn btn-gold" data-botao="lembranca" data-track="lembranca" href="#">
+        <svg aria-hidden="true" width="24" height="24"><use href="#ico-zap"/></svg>
+        <span>Pedir a lembrança</span>
+      </a>
+      <p class="small">Você envia o nome, as datas e a foto pelo WhatsApp e vê como ficou antes de pagar.</p>
     </div>
   </div>
 </section>
 
-<section id="como">
-  <div class="wrap">
-    <span class="eyebrow">É SIMPLES</span>
-    <h2>Como funciona</h2>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Escolha e pague</h3><p>Pix ou cartão, em ambiente seguro da Kiwify, a mesma plataforma de milhares de cursos e produtos digitais no Brasil.</p></div>
-      <div class="step"><div class="n">2</div><h3>Receba na hora, por e‑mail</h3><p>É um produto digital: os arquivos chegam por e‑mail e ficam na sua área de membros para baixar quantas vezes quiser. Nada é enviado pelo correio.</p></div>
-      <div class="step"><div class="n">3</div><h3>Imprima ou use no celular</h3><p>Leve na gráfica ou imprima em casa. A arte em A4 ou A3 fica linda emoldurada; o santinho, na carteira ou na Bíblia.</p></div>
-    </div>
-    <div class="trust">
-      <span>Produto digital</span><span>Pagamento seguro</span><span>Pix e cartão</span><span>Entrega imediata por e‑mail</span><span>Atendimento pelo WhatsApp</span>
-    </div>
-  </div>
-</section>
-
-<section class="zap" id="whatsapp">
-  <div class="wrap">
-    <div class="box">
-      <h2>A oração do dia no seu WhatsApp</h2>
-      <p>Todo dia cedo, um santo e uma oração curta para começar bem. É gratuito e você sai quando quiser.</p>
-      <div class="btns">
-        <a class="btn btn-wa btn-full" data-track="canal" href="#" id="btnCanal">Entrar no canal do WhatsApp</a>
-        <a class="btn btn-line btn-full" data-track="conversa" href="#" id="btnConversa" hidden>Falar com a gente</a>
+<section class="oracao" id="oracao-narrada">
+  <div class="wrap stack">
+    <p class="eyebrow">ORAÇÃO NARRADA</p>
+    <h2>Uma oração em áudio, dizendo o nome da pessoa</h2>
+    <p>Cerca de 30 segundos, para ouvir e enviar a quem você ama.</p>
+    <div class="player">
+      <button class="play" id="play" type="button" aria-label="Ouvir o exemplo">
+        <svg class="ico-play" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ico-pause" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="meio">
+        <span class="titulo">Ouça um exemplo</span>
+        <div class="barra" aria-hidden="true"><i id="progresso"></i></div>
       </div>
+      <span class="tempo" id="tempo">0:14</span>
+      <audio id="audio" src="audio/exemplo-oracao.mp3" preload="none"></audio>
     </div>
+    <p class="preco" id="precoOracao"></p>
+    <p class="small">Depois do Pix confirmado, a oração chega no seu WhatsApp em até 1 dia.</p>
+    <a class="btn btn-wa" data-botao="oracao" data-track="oracao-narrada" href="#">
+      <svg aria-hidden="true" width="24" height="24"><use href="#ico-zap"/></svg>
+      <span>Pedir a oração narrada</span>
+    </a>
   </div>
 </section>
+
+<section class="canal" id="canal">
+  <div class="wrap stack">
+    <h2>A oração de cada manhã no seu WhatsApp</h2>
+    <p>Todo dia, um santo e uma oração curta. De graça, e você sai quando quiser.</p>
+    <a class="btn btn-blue" data-track="canal" id="btnCanal" href="#">Entrar no canal</a>
+  </div>
+</section>
+
+<section class="como" id="como">
+  <div class="wrap stack">
+    <h2>Como funciona</h2>
+    <div class="passo"><span class="n">1</span><p><b>Toque no botão</b>O WhatsApp abre com a mensagem pronta. É só enviar.</p></div>
+    <div class="passo"><span class="n">2</span><p><b>Diga o nome</b>O atendimento responde a qualquer hora, pergunta o nome da pessoa e prepara tudo.</p></div>
+    <div class="passo"><span class="n">3</span><p><b>Receba ali mesmo</b>O santinho chega na hora, de graça. A lembrança e a oração narrada são pagas por Pix.</p></div>
+  </div>
+</section>
+</main>
 
 <footer>
-  <svg class="sym" style="color:var(--dourado)"><use href="#simbolo"/></svg>
-  <div class="serif" style="font-size:22px;color:var(--marfim)">Meu Santinho</div>
-  <div class="social">
-    <a id="lnkIg" href="#">Instagram</a><a id="lnkFb" href="#">Facebook</a><a id="lnkTt" href="#">TikTok</a>
+  <div class="wrap stack">
+    <span class="marca">Meu Santinho</span>
+    <div class="links">
+      <a id="lnkIg" href="#">Instagram</a><a id="lnkFb" href="#">Facebook</a><a id="lnkTt" href="#">TikTok</a>
+    </div>
+    <div class="links legais">
+      <a href="/privacidade/">Política de Privacidade</a><a href="/termos/">Termos de Uso</a>
+    </div>
+    <p class="copy">© <span id="ano"></span> Meu Santinho · Arte sacra digital</p>
   </div>
-  <div>© <span id="ano"></span> Meu Santinho · Arte sacra digital · meusantinhobr.com.br</div>
-  <div style="margin-top:8px;font-size:15px"><a href="/privacidade/">Política de Privacidade</a> · <a href="/termos/">Termos de Uso</a></div>
 </footer>
 
 <script>
 (function(){
-  const c = CONFIG;
-  // ---- UTM: repassa a origem (anúncio → site → Kiwify) ----
-  const inc = new URLSearchParams(location.search);
-  const src = inc.get("utm_source") || "site";
-  const med = inc.get("utm_medium") || "landing";
-  const camp = inc.get("utm_campaign") || "";
-  function utm(url, content){
-    if(!url || url==="#") return "#";
-    const u = new URL(url);
-    u.searchParams.set("utm_source", src);
-    u.searchParams.set("utm_medium", med);
-    if(camp) u.searchParams.set("utm_campaign", camp);
-    u.searchParams.set("utm_content", content);
-    return u.toString();
+  var c = CONFIG;
+
+  // ---- links dos botões ----
+  function link(slug, texto){
+    if(c.usarLinksCurtos) return c.linkBase + slug + "?o=" + encodeURIComponent(c.origem);
+    return "https://wa.me/" + c.whatsappNumber + "?text=" + encodeURIComponent(texto);
   }
-  // ---- kits ----
-  const grid = document.getElementById("grid");
-  const thumbs = document.getElementById("thumbs");
-  c.kits.forEach(k=>{
-    const el = document.createElement("article");
-    el.className="kit";
-    el.innerHTML = `
-      ${k.destaque ? '<span class="badge">LANÇAMENTO</span>' : ''}
-      <div class="arch"><img src="img/${k.slug}.webp" alt="${k.nome}"></div>
-      <div class="body">
-        <h3>${k.nome}</h3>
-        <div class="linha">${k.linha}</div>
-        ${k.url ? `<div class="preco">${k.de ? `<small>${k.de}</small>` : ''}${k.preco}</div>
-        <a class="btn ${k.destaque?'btn-gold':'btn-blue'} btn-full" data-track="kit-${k.slug}" href="${utm(k.url,'kit-'+k.slug)}">Quero este santinho</a>`
-        : `<div class="preco" style="font-size:17px;color:#777;font-weight:400">Incluído na coleção</div>
-        <a class="btn btn-line btn-full" href="#colecao">Vem na coleção</a>`}
-      </div>`;
-    grid.appendChild(el);
-    const t=document.createElement("span"); t.innerHTML=`<img src="img/${k.slug}.webp" alt="">`; thumbs.appendChild(t);
+
+  // ---- grade de santos ----
+  var grade = document.getElementById("grade");
+  c.santos.forEach(function(s){
+    var a = document.createElement("a");
+    a.className = "santo";
+    a.href = link(s.slug, c.botoes.santinho.texto + " de " + s.nome);
+    a.setAttribute("data-track", "santo-" + s.slug);
+    var img = document.createElement("img");
+    img.src = "img/santo-" + s.slug + ".webp";
+    img.width = 480; img.height = 640; img.loading = "lazy"; img.alt = s.nome;
+    var rot = document.createElement("span"); rot.className = "rot";
+    var nome = document.createElement("span"); nome.className = "nome"; nome.textContent = s.nome;
+    var pedir = document.createElement("span"); pedir.className = "pedir"; pedir.textContent = "Pedir no WhatsApp";
+    rot.appendChild(nome); rot.appendChild(pedir);
+    a.appendChild(img); a.appendChild(rot);
+    grade.appendChild(a);
   });
-  // ---- coleção ----
-  document.getElementById("colNome").textContent = c.colecao.nome;
-  document.getElementById("colPreco").innerHTML = (c.colecao.de?`<small style="font-size:18px;color:rgba(247,241,227,.6);text-decoration:line-through;margin-right:8px">${c.colecao.de}</small>`:'') + c.colecao.preco;
-  document.getElementById("colSelo").textContent = c.colecao.selo || "";
-  document.getElementById("inclui").innerHTML = c.kitInclui.map(i=>`<li>${i}</li>`).join("") + "<li>Os 10 santos, com novos santos por vir</li>";
-  document.getElementById("btnColecao").href = utm(c.colecao.url,"colecao");
-  // ---- links fixos ----
-  document.getElementById("btnNovena").href = c.novenaUrl;
-  document.getElementById("btnNovenaAlmas").href = c.novenaAlmasUrl;
-  document.getElementById("btnNovenaAlmasWa").href = c.novenaAlmasWa;
-  document.getElementById("btnCanal").href = c.whatsappChannel;
-  const conv = document.getElementById("btnConversa");
-  if(c.whatsappNumber){ conv.hidden=false; conv.href="https://wa.me/"+c.whatsappNumber+"?text="+encodeURIComponent("Olá! Vim pelo site do Meu Santinho."); }
-  document.getElementById("lnkIg").href=c.instagram; document.getElementById("lnkFb").href=c.facebook; document.getElementById("lnkTt").href=c.tiktok;
+  document.getElementById("totalSantos").textContent = c.totalSantos;
+
+  // ---- botões fixos ----
+  document.querySelectorAll("[data-botao]").forEach(function(a){
+    var b = c.botoes[a.getAttribute("data-botao")];
+    if(b) a.href = link(b.slug, b.texto);
+  });
+  document.getElementById("btnCanal").href = c.canal;
+  document.getElementById("lnkIg").href = c.instagram;
+  document.getElementById("lnkFb").href = c.facebook;
+  document.getElementById("lnkTt").href = c.tiktok;
+  document.getElementById("precoLembranca").textContent = c.precoLembranca;
+  document.getElementById("precoOracao").textContent = c.precoOracao;
   document.getElementById("ano").textContent = new Date().getFullYear();
-  // ---- Pixel da Meta ----
+
+  // ---- exemplo em áudio ----
+  var audio = document.getElementById("audio"), play = document.getElementById("play");
+  var prog = document.getElementById("progresso"), tempo = document.getElementById("tempo");
+  function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + ("0" + (s % 60)).slice(-2); }
+  play.addEventListener("click", function(){
+    if(audio.paused){ audio.play(); track("ouvir-exemplo"); } else { audio.pause(); }
+  });
+  audio.addEventListener("play", function(){ play.classList.add("tocando"); play.setAttribute("aria-label", "Pausar o exemplo"); });
+  audio.addEventListener("pause", function(){ play.classList.remove("tocando"); play.setAttribute("aria-label", "Ouvir o exemplo"); });
+  audio.addEventListener("timeupdate", function(){
+    if(!audio.duration) return;
+    prog.style.width = (100 * audio.currentTime / audio.duration) + "%";
+    tempo.textContent = fmt(audio.duration - audio.currentTime);
+  });
+  audio.addEventListener("ended", function(){ prog.style.width = "0"; tempo.textContent = fmt(audio.duration); });
+
+  // ---- pixel ----
+  function track(id){
+    if(window.fbq) fbq('trackCustom', id === "ouvir-exemplo" ? 'OuvirExemplo' : 'ClickWhatsApp', {content_name: id});
+  }
   if(c.pixelId){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', c.pixelId); fbq('track','PageView');
-    document.querySelectorAll("[data-track]").forEach(a=>a.addEventListener("click",()=>{
-      const id=a.dataset.track;
-      if(id.startsWith("kit-")||id==="colecao") fbq('track','InitiateCheckout',{content_name:id});
-      else if(id==="novena"||id==="novena-almas") fbq('track','Lead',{content_name:id});
-      else fbq('trackCustom','ClickWhatsApp',{content_name:id});
-    }));
   }
+  document.addEventListener("click", function(ev){
+    var a = ev.target.closest ? ev.target.closest("[data-track]") : null;
+    if(a) track(a.getAttribute("data-track"));
+  });
 })();
 </script>
 </body>
