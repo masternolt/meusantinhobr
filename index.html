@@ -308,8 +308,12 @@ footer .copy{margin-top:6px;font-size:15px;color:#E4DCC8}
   var c = CONFIG;
 
   // ---- links dos botões ----
+  // origem: o site marca "site"; se a pessoa chegou por um link com ?o=bio (ou story, fixado, qr), mantém essa marca
+  var veio = "";
+  try { veio = (new URLSearchParams(location.search).get("o") || "").toLowerCase(); } catch(e) {}
+  var origem = ["bio", "story", "fixado", "qr"].indexOf(veio) >= 0 ? veio : c.origem;
   function link(slug, texto){
-    if(c.usarLinksCurtos) return c.linkBase + slug + "?o=" + encodeURIComponent(c.origem);
+    if(c.usarLinksCurtos) return c.linkBase + slug + "?o=" + encodeURIComponent(origem);
     return "https://wa.me/" + c.whatsappNumber + "?text=" + encodeURIComponent(texto);
   }
 
